@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.cloud.confidence</groupId>
+        <artifactId>confidence-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../confidence-parent/pom.xml</relativePath>
+    </parent>
+    <groupId>com.cloud.confidence</groupId>
+    <artifactId>confidence-eureka</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>confidence-eureka</name>
+    <description>Demo project for Spring Boot</description>
+
+    <!--配置启动类-->
+    <properties>
+        <start-class>com.cloud.confidence.confidenceeureka.ConfidenceEurekaApplication</start-class>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
