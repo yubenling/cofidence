@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.confidence.confidenceorder.dao.TLoggerMapper">
+  <resultMap id="BaseResultMap" type="com.cloud.confidence.confidenceorder.entity.TLogger">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="group_id" jdbcType="VARCHAR" property="groupId" />
+    <result column="unit_id" jdbcType="VARCHAR" property="unitId" />
+    <result column="tag" jdbcType="VARCHAR" property="tag" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="app_name" jdbcType="VARCHAR" property="appName" />
+  </resultMap>
+  <insert id="insert" parameterType="com.cloud.confidence.confidenceorder.entity.TLogger">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_logger (group_id, unit_id, tag, 
+      content, create_time, app_name
+      )
+    values (#{groupId,jdbcType=VARCHAR}, #{unitId,jdbcType=VARCHAR}, #{tag,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{appName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, group_id, unit_id, tag, content, create_time, app_name
+    from t_logger
+  </select>
+</mapper>
