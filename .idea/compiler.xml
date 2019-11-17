@@ -7,11 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="confidence-eureka" />
-        <module name="confidence-config" />
         <module name="confidence-user" />
+        <module name="confidence-config" />
         <module name="confidence-tm" />
         <module name="confidence-order" />
-        <module name="confidence-parent" />
         <module name="confidence-manager" />
       </profile>
     </annotationProcessing>

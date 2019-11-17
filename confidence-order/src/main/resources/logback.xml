@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+    <contextName>MovieBooking</contextName>
+    <timestamp key="TIMESTAMP" datePattern="yyyy-MM-dd" />
+    <property name="LOGPATH" value="log" />
+
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <!-- 输出到控制台 -->
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>
+                %d{yy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{40} - %msg%n
+            </pattern>
+        </layout>
+    </appender>
+
+    <!-- 输出info级别到文件 -->
+    <appender name="infoFileLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>debug</level>
+            <onMatch>DENY</onMatch>
+            <onMismatch>ACCEPT</onMismatch>
+        </filter>
+        <file>${LOGPATH}${file.separator}${TIMESTAMP}-info.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>
+                %d{yy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{40} - %msg%n
+            </pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGPATH}${file.separator}all${file.separator}%d{yy-MM-dd}-info.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>10MB</MaxFileSize>
+        </triggeringPolicy>
+    </appender>
+
+    <!-- 输出erro级别到文件 -->
+    <appender name="erroFileLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <file>${LOGPATH}${file.separator}${TIMESTAMP}-erro.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>
+                %d{yy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{40} - %msg%n
+            </pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGPATH}${file.separator}all${file.separator}%d{yy-MM-dd}-erro.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>10MB</MaxFileSize>
+        </triggeringPolicy>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="infoFileLog" />
+        <appender-ref ref="erroFileLog" />
+        <appender-ref ref="stdout"  />
+    </root>
+</configuration>
