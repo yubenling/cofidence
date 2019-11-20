@@ -27,6 +27,7 @@
          <module>../confidence-config</module>
          <module>../confidence-manager</module>
          <module>../confidence-tm</module>
+         <module>../confidence-zuul</module>
      </modules>
 
     <dependencyManagement>
