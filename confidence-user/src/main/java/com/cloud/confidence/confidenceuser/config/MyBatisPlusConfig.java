@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  *@desc  */
 @EnableTransactionManagement
 @Configuration
-@MapperScan("com.cloud.confidence.confidenceuser.dao")
 public class MyBatisPlusConfig {
 
     // mybatis-plus分页插件

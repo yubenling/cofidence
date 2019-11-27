@@ -14,7 +14,7 @@ import lombok.*;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName(value = "user")
+@TableName(value = "t_user")
 public class User {
 
     private  Integer id;
